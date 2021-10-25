@@ -4,6 +4,10 @@
 **RICHIEDE YOUTUBE API KEY**
 > se non sapete procurarvela guardate un tutorial di 2 minuti su youtube grazie, tanto per un selfbot non avrete mai bisogno di 10K+richieste al giorno
 
+## da fare prima di far partire il tool
+- andare alla riga 62 dell'index e inserire la vostra spotify api key
+- per sicurezza fare npm install
+
 ## info generali
 - prefisso: **w!!**
 - lista comandi: **w!!help**
