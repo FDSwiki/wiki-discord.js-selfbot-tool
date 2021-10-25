@@ -7,6 +7,7 @@
 ## da fare prima di far partire il tool
 - andare alla riga 62 dell'index e inserire la vostra spotify api key
 - per sicurezza fare npm install
+- IMPORTANTE: il token quando lo inserite non deve avere "" all'inizio e alla fine. prima o poi trovo la voglia di toglierle in automatico
 
 ## info generali
 - prefisso: **w!!**
