@@ -8,7 +8,7 @@ const path = require('path');
 module.exports = {
     name: 'getallemoji',
     category: 'general',
-    aliases: ['vc', 'membrivc', 'uservc'],
+    aliases: [],
     descrizione: 'ottieni tutte le emoji di un server',
     run: async (client, message, args) => {
         

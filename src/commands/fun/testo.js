@@ -6,7 +6,7 @@ const Client = new Genius.Client()
 module.exports = {
     name: 'testo',
     category: 'fun',
-    aliases: ['dm', 'email'],
+    aliases: [],
     descrizione: `ottiene il testo di una canzone`,
     run: async(client, message, args) => {
 
