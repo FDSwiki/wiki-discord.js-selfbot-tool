@@ -5,6 +5,8 @@
 > se non sapete procurarvela guardate un tutorial di 2 minuti su youtube grazie, tanto per un selfbot non avrete mai bisogno di 10K+richieste al giorno
 
 ## da fare prima di far partire il tool
+- magari scaricare node.js se non ce lo avete già
+- magari non fare npm install. se lo fate dallo zip originale tirate fuori la cartella node modules e sostituitela a quella già presente
 - IMPORTANTE: il token quando lo inserite non deve avere "" all'inizio e alla fine. prima o poi trovo la voglia di toglierle in automatico
 
 ## info generali
