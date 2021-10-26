@@ -2,8 +2,12 @@ const {Client, Intents, Collection} = require ('discord.js-self');
 const { promisify } = require('util');
 const glob = require('glob');
 const fs = require('fs');
+var path = require('path');
 const config = '../config.json';
 const file = require(config);
+const confapikey = path.join(__dirname, '..', '/node_modules/popyt/out/util/confapikey.json')
+const apifile = require(confapikey);
+
 const { MusicBot } = require('discord-music-system');
 
 const globpromise = promisify(glob);
@@ -54,24 +58,46 @@ try {
     console.log('Error:', e.stack);
 }
 
+//inserzione api key di yt
+//se la api key non è inserita
+if (apifile.apikey == " ") {
+    const apikey = prompt('inserisci la tua apikey: ');
+    apifile.apikey = apikey;
+    
+    fs.writeFile(path.join(__dirname, '..', '/node_modules/popyt/out/util/confapikey.json'), JSON.stringify(apifile, null, 2), function writeJSON(err) {
+      if (err) return console.log(err);
+      console.log('\napi key inserita con successo!\n');
+    })
 
-
-
-//music bot. package skiddato perchè non ho lo sbatti di fare roba mia
 client.musicBot = new MusicBot(client, {
-    ytApiKey: '',
+    ytApiKey: apifile.apikey,
     prefix: 'w!!', // Your bot prefix [non cambiare se non sai dove mettere le mani per cambiare il prefisso dei main bot]
     language: 'en' // fr, en, es, pt
-});
+})
 
 client.on('message', async message => {
     if(message.author.bot) {
         return;
     };
     client.musicBot.onMessage(message);
-});
+})
+//se la api key è già inserita
+}else {
+     console.log('accesso eseguito mediante api key precedentemente inserita \nse si desidera cambiare yt api key usare il comando w!!swapkey\n\n')
 
-
+        client.musicBot = new MusicBot(client, {
+            ytApiKey: apifile.apikey,
+            prefix: 'w!!', // Your bot prefix [non cambiare se non sai dove mettere le mani per cambiare il prefisso dei main bot]
+            language: 'en' // fr, en, es, pt
+        })
+        
+        client.on('message', async message => {
+            if(message.author.bot) {
+                return;
+            };
+            client.musicBot.onMessage(message);
+        })
+}
 
 
 if (file.token == " ") {
