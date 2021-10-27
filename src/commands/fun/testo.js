@@ -21,7 +21,7 @@ module.exports = {
         const firstSong = searches[0];
         // ottiene la lyric della canzone
         const lyrics = await firstSong.lyrics();
-        const song = lyrics.substring(0, lyrics.length)
+        const song = await lyrics.substring(0, lyrics.length)
         setTimeout(() => {message.channel.send(song, { split: true })}, 3000)
     }
 }
