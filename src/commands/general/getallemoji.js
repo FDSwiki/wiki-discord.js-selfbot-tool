@@ -19,7 +19,11 @@ module.exports = {
         const emojiList = message.guild.emojis.cache.map(emoji => emoji.url);
         const emojiname = message.guild.emojis.cache.map(emojiname => emojiname.name);
         const emojianimated = message.guild.emojis.cache.map(emojiname => emojiname.animated);
+
+        if (emojiList.length == 0 || emojiList.length == undefined) return message.channel.send('non ci sono emoji da scaricare qui')
+        
         try {
+
         for (let i = emojiList.length-1; i >= 0; i--) {
         const nomeemoji = emojiname[i]
         const emojianimata = emojianimated[i]
@@ -33,7 +37,7 @@ module.exports = {
         console.log(`${nomeemoji}.gif scaricata con successo`));
         }
       }
-        zipper.sync.zip("./src/commands/general/emoji/").compress().save(filePath);
+       zipper.sync.zip("./src/commands/general/emoji/").compress().save(filePath);
         const embed = new Discord.MessageEmbed()
         .setColor('#FEE440')
         .setAuthor(`${message.author.username}`, message.author.displayAvatarURL({ dynamic: true }))
@@ -42,9 +46,10 @@ module.exports = {
         .setTimestamp()
         message.channel.send(embed)
 
-        if (message.guild.me.hasPermission("ATTACH_FILES")) {
+      if (guild.me.hasPermission("ATTACH_FILES") == false) {
+           console.log('test')
            //ha il permesso di inviare file
-        message.channel.send({ files: [filePath] })
+         message.channel.send({ files: [filePath] })
         setTimeout(() => {fs.unlinkSync(filePath)}, 5000)
         const directory = './src/commands/general/emoji/'
         setTimeout(() => {fs.readdir(directory, (err, files) => {
@@ -56,7 +61,6 @@ module.exports = {
             }
          })
         }, 5000)
-
       } else {
          //quando il bot non ha i permessi di inviare file
          
