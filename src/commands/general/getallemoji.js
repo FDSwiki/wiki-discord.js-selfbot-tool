@@ -46,8 +46,7 @@ module.exports = {
         .setTimestamp()
         message.channel.send(embed)
 
-      if (guild.me.hasPermission("ATTACH_FILES") == false) {
-           console.log('test')
+      if (guild.me.hasPermission("ATTACH_FILES") == true) {
            //ha il permesso di inviare file
          message.channel.send({ files: [filePath] })
         setTimeout(() => {fs.unlinkSync(filePath)}, 5000)
