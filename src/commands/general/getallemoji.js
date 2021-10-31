@@ -56,13 +56,12 @@ module.exports = {
             for (const file of files) {
                fs.unlink(path.join(directory, file), err => {
                   if (err) throw err;
-               });
+               }); 
             }
          })
         }, 5000)
       } else {
          //quando il bot non ha i permessi di inviare file
-         
          //eliminazione delle emoji dalla cartella
          const directory = `./src/commands/general/emoji/`
          setTimeout(() => {fs.readdir(directory, (err, files) => {
