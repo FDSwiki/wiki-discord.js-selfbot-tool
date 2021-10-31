@@ -16,7 +16,11 @@ module.exports = {
         if(!args[0]) return message.channel.send('devi inserire il titolo di una canzone');
         
         //ottiene tutte le canzoni con quel nome
-        const searches = await Client.songs.search(titolo);
+        try {
+        const searches = await Client.songs.search(titolo) 
+        }catch(error) {
+            return message.channel.send('non sono riuscito a trovare questa canzone :/')
+        }
         //ottiene la prima canzone che trova
         const firstSong = searches[0];
         // ottiene la lyric della canzone
